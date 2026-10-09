@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>黄羽 · 作品集</title>
+<style>
+:root{
+  --paper:#F5F2EC;
+  --paper-2:#EFEAE0;
+  --card:#FCFAF6;
+  --ink:#24221C;
+  --ink-2:#716B5E;
+  --ink-3:#9A9486;
+  --line:#E1DBCD;
+  --accent:#BC6E43;
+  --accent-2:#9C572F;
+  --accent-soft:#F1E3D7;
+  --band:#EDE5D8;
+  --serif:Georgia,"Times New Roman","Songti SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",sans-serif;
+  --mono:Consolas,"SF Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:16px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--accent);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 30px}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  height:66px;display:flex;align-items:center;
+  transition:background .35s,box-shadow .35s,height .35s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(245,242,236,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  height:58px;
+}
+.nav-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 30px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;letter-spacing:.06em;font-size:17px}
+.logo span{font-family:var(--serif);font-style:italic;font-weight:400;font-size:13px;color:var(--ink-2);margin-left:8px;letter-spacing:.02em}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:14px;color:var(--ink-2);position:relative;transition:color .25s;letter-spacing:.02em}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a .n{font-family:var(--serif);font-size:11px;color:var(--accent);margin-right:5px}
+.nav-contact{border:1px solid var(--ink);padding:7px 18px;font-size:13px;border-radius:40px;transition:.25s}
+.nav-contact:hover{background:var(--ink);color:var(--paper)}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:70px;align-items:center;width:100%}
+.kicker{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12px;letter-spacing:.28em;color:var(--ink-2);margin-bottom:34px}
+.kicker::after{content:"";height:1px;width:70px;background:var(--ink-3)}
+.hero h1{font-size:clamp(42px,6.6vw,84px);line-height:1.12;font-weight:700;letter-spacing:-.015em}
+.hero h1 .ul{position:relative;display:inline-block;color:var(--accent)}
+.hero h1 .ul svg{position:absolute;left:0;right:0;bottom:-10px;width:100%;height:14px}
+.hero-sub{margin-top:32px;color:var(--ink-2);font-size:16.5px;max-width:470px}
+.hero-sub b{color:var(--ink);font-weight:600}
+.hero-btns{margin-top:42px;display:flex;align-items:center;gap:34px}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 30px;border-radius:40px;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:.25s}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-2px)}
+.btn-primary .arr{transition:transform .25s}
+.btn-primary:hover .arr{transform:translateX(4px)}
+.btn-ghost{font-size:15px;color:var(--ink);display:inline-flex;gap:8px;align-items:center;border-bottom:1px solid var(--ink-3);padding-bottom:3px;transition:.25s}
+.btn-ghost:hover{color:var(--accent);border-color:var(--accent)}
+.hero-note{margin-top:26px;font-size:13px;color:var(--ink-3)}
+
+.index-list{border-top:1px solid var(--line)}
+.index-list a{display:flex;align-items:baseline;gap:18px;padding:21px 6px;border-bottom:1px solid var(--line);transition:.25s;position:relative}
+.index-list a:hover{padding-left:18px}
+.index-list a:hover .il-title{color:var(--accent)}
+.il-num{font-family:var(--serif);font-size:15px;color:var(--ink-3);min-width:28px}
+.il-title{font-size:19px;font-weight:600;letter-spacing:.01em;transition:color .25s}
+.il-tag{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--accent);border:1px solid var(--accent);padding:2px 9px;border-radius:30px}
+.il-arrow{opacity:0;transform:translateX(-6px);transition:.25s;color:var(--accent)}
+.index-list a:hover .il-arrow{opacity:1;transform:translateX(0)}
+
+/* ---------- about band ---------- */
+.about{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;padding:58px 0;align-items:center}
+.about-quote{font-size:clamp(20px,2.2vw,26px);line-height:1.6;font-weight:600;letter-spacing:.01em}
+.about-quote em{font-style:normal;color:var(--accent);position:relative}
+.about-tools{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
+.chip{font-size:12.5px;color:var(--ink-2);border:1px solid var(--line);background:var(--paper);padding:5px 13px;border-radius:30px}
+.chip.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.about-stats{display:flex;gap:38px;padding-top:20px;border-top:1px solid var(--line)}
+.stat .v{font-family:var(--serif);font-size:30px;line-height:1}
+.stat .l{font-size:12px;color:var(--ink-2);margin-top:7px;letter-spacing:.05em}
+
+/* ---------- section common ---------- */
+section.block{padding:110px 0}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:0 34px;align-items:start;margin-bottom:64px}
+.sec-num{font-family:var(--serif);font-size:clamp(56px,7vw,96px);line-height:.9;color:transparent;-webkit-text-stroke:1.4px var(--accent);grid-row:span 2}
+.sec-top{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.26em;color:var(--accent);padding-top:14px}
+.sec-top::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec-title{font-size:clamp(28px,3.6vw,42px);font-weight:700;letter-spacing:.01em;line-height:1.25}
+.sec-desc{grid-column:2;color:var(--ink-2);font-size:15.5px;max-width:620px;margin-top:14px}
+
+.sub-head{display:flex;align-items:baseline;gap:14px;margin:64px 0 26px}
+.sub-head h3{font-size:19px;font-weight:700}
+.sub-head .sn{font-family:var(--serif);color:var(--accent);font-size:14px}
+.sub-head::after{content:"";flex:1;height:1px;background:var(--line);margin-left:8px}
+.sub-head .hint{font-size:12.5px;color:var(--ink-3);font-weight:400}
+
+/* browser / phone frames */
+.browser{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 18px 44px -26px rgba(60,50,30,.35)}
+.browser-bar{height:40px;background:var(--paper-2);display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid var(--line)}
+.browser-bar i{width:10px;height:10px;border-radius:50%;background:#D8D1C2;display:block}
+.browser-bar .url{margin-left:12px;font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+
+/* feature cards */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.feat-card .poster-frame{height:440px;overflow:hidden;position:relative;cursor:pointer;background:var(--paper-2)}
+.feat-card .poster-frame img{width:100%;transition:transform .6s ease}
+.feat-card .poster-frame:hover img{transform:translateY(calc(-100% + 440px));transition:transform 6s linear}
+.scroll-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(36,34,28,.78);color:#fff;font-size:11px;padding:5px 13px;border-radius:30px;letter-spacing:.05em;opacity:0;transition:.3s}
+.feat-card .poster-frame:hover .scroll-hint{opacity:1}
+.feat-body{padding:26px 4px 0}
+.tag-row{display:flex;gap:8px;margin-bottom:13px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--accent);background:var(--accent-soft);padding:3px 11px;border-radius:30px}
+.tag.gray{color:var(--ink-2);background:var(--paper-2)}
+.feat-body h4{font-size:19px;line-height:1.5;font-weight:700;margin-bottom:11px}
+.feat-body p{font-size:14px;color:var(--ink-2)}
+.feat-body .tools{margin-top:15px;font-size:12px;color:var(--ink-3);font-family:var(--mono)}
+
+/* mini cards */
+.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.mini-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);transition:.3s;cursor:pointer}
+.mini-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px -24px rgba(60,50,30,.4)}
+.mini-card .mc-img{height:250px;overflow:hidden;background:var(--paper-2)}
+.mini-card .mc-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s}
+.mini-card:hover .mc-img img{transform:scale(1.05)}
+.mc-body{padding:17px 18px 20px}
+.mc-body h5{font-size:15px;line-height:1.5;font-weight:700;margin-bottom:7px}
+.mc-body p{font-size:12.5px;color:var(--ink-2);line-height:1.65}
+.mc-body .meta{font-family:var(--mono);font-size:10.5px;color:var(--accent);margin-bottom:8px;letter-spacing:.08em}
+
+/* visual gallery */
+.mag-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:26px}
+.mag-item{cursor:pointer;transition:.3s}
+.mag-item:hover{transform:translateY(-4px)}
+.mag-item .frame{overflow:hidden;border-radius:10px;border:1px solid var(--line);background:#fff}
+.mag-item img{width:100%;transition:transform .55s}
+.mag-item:hover img{transform:scale(1.04)}
+.mag-item .cap{font-size:12.5px;color:var(--ink-2);margin-top:10px;padding-left:2px}
+.mag-item .cap b{color:var(--ink);font-weight:600;display:block;font-size:13.5px;margin-bottom:2px}
+.w7{grid-column:span 7}.w5{grid-column:span 5}.w6{grid-column:span 6}
+.web-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.web-card .browser .shot{height:300px;overflow:hidden}
+.web-card .browser .shot img{width:100%}
+.web-card{cursor:pointer}
+.web-card .cap{font-size:12.5px;color:var(--ink-2);margin-top:11px}
+.web-card .cap b{display:block;color:var(--ink);font-size:13.5px}
+
+/* ---------- key project band ---------- */
+.band{background:var(--band);border-top:1px solid #DED5C5;border-bottom:1px solid #DED5C5}
+.band .sec-num{-webkit-text-stroke:1.4px var(--accent)}
+.key-meta{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 8px}
+.key-showcase{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:50px}
+.key-showcase .browser .shot{height:560px;overflow:hidden}
+.key-showcase .browser .shot img{width:100%}
+.key-showcap{font-size:12.5px;color:var(--ink-2);margin-top:11px}
+.key-showcap b{display:block;color:var(--ink);font-size:13.5px;margin-bottom:2px}
+.process{margin-top:72px;position:relative}
+.process-line{position:absolute;top:21px;left:2%;right:2%;height:1px;background:#CFC5B2}
+.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;position:relative}
+.pstep{background:var(--card);border:1px solid #DCD2C0;border-radius:12px;padding:22px 20px 24px;position:relative}
+.pstep .pn{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--serif);font-size:17px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;border:4px solid var(--band)}
+.pstep h5{font-size:15px;font-weight:700;margin-bottom:9px}
+.pstep p{font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.deliver{margin-top:44px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.deliver .dl-label{font-size:13px;color:var(--ink-2)}
+.key-cta{margin-top:40px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.btn-dark{background:var(--ink);color:var(--paper);padding:15px 32px;border-radius:40px;font-size:15px;display:inline-flex;gap:11px;align-items:center;transition:.25s}
+.btn-dark:hover{background:var(--accent);transform:translateY(-2px)}
+.key-note{font-size:12.5px;color:var(--ink-2)}
+
+/* ---------- video ---------- */
+.vid-card{display:grid;grid-template-columns:1.25fr .9fr;gap:44px;align-items:center;padding:40px 0;border-bottom:1px solid var(--line)}
+.vid-card:last-child{border-bottom:none}
+.vid-card.flip .vid-media{order:2}
+.vid-media{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;background:#111;box-shadow:0 26px 50px -30px rgba(40,30,15,.5)}
+.vid-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s,opacity .3s}
+.vid-media:hover img{transform:scale(1.04)}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;transition:.25s}
+.vid-media:hover .play-btn{background:var(--accent)}
+.vid-media:hover .play-btn svg path{fill:#fff}
+.vid-duration{position:absolute;right:14px;bottom:14px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:4px 11px;border-radius:6px;font-family:var(--mono)}
+.vid-media video{width:100%;height:100%;object-fit:cover;background:#000}
+.vid-info .meta{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--accent);margin-bottom:14px}
+.vid-info h4{font-size:23px;font-weight:700;line-height:1.45;margin-bottom:14px}
+.vid-info .role{font-size:13.5px;color:var(--ink);margin-bottom:12px}
+.vid-info .role b{color:var(--accent);font-weight:600}
+.vid-info p{font-size:14px;color:var(--ink-2);margin-bottom:16px}
+.vid-info .tools{font-size:12px;color:var(--ink-3);font-family:var(--mono)}
+.vid-info .full-note{margin-top:14px;font-size:12px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:12px}
+
+/* ---------- footer ---------- */
+footer{padding:100px 0 60px;background:var(--ink);color:#D9D3C6}
+.foot-title{font-size:clamp(30px,4.4vw,52px);font-weight:700;line-height:1.3;color:#fff}
+.foot-title em{font-style:normal;color:#E0915F}
+.foot-grid{display:grid;grid-template-columns:1fr auto;gap:50px;margin-top:54px;align-items:end}
+.foot-contact{display:flex;gap:40px;flex-wrap:wrap}
+.fc-item .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:#8F8878;margin-bottom:9px}
+.fc-item .v{font-size:16px;color:#F2EDE2}
+.foot-note{margin-top:60px;padding-top:26px;border-top:1px solid #3A372F;font-size:12.5px;color:#8F8878;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.totop{justify-self:end;border:1px solid #5A564B;border-radius:40px;padding:12px 22px;font-size:13px;color:#D9D3C6;transition:.25s;white-space:nowrap}
+.totop:hover{background:#E0915F;border-color:#E0915F;color:#1C1A14}
+
+/* ---------- lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(28,26,21,.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column}
+.lightbox.open{display:flex}
+.lb-img{max-width:92vw;max-height:82vh;border-radius:8px;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.lb-cap{color:#D9D3C6;font-size:13.5px;margin-top:18px;max-width:70vw;text-align:center}
+.lb-cap b{color:#fff}
+.lb-close{position:absolute;top:26px;right:32px;color:#D9D3C6;font-size:34px;cursor:pointer;line-height:1;background:none;border:none;font-family:var(--serif)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#D9D3C6;font-size:44px;cursor:pointer;background:none;border:none;padding:30px;transition:color .2s}
+.lb-nav:hover{color:#E0915F}
+.lb-prev{left:10px}.lb-next{right:10px}
+.lb-counter{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11.5px;color:#8F8878;letter-spacing:.15em}
+
+/* ---------- hero portrait (designed) ---------- */
+.portrait-art{position:relative;max-width:372px;margin:0 auto}
+.pa-shape{position:absolute;inset:22px -18px -20px 18px;background:var(--accent-soft);border:1px solid var(--line);border-radius:190px 190px 16px 16px;transform:rotate(3.2deg)}
+.pa-photo{position:relative;border-radius:190px 190px 14px 14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 32px 64px -32px rgba(50,40,20,.55);transform:rotate(-2.2deg);aspect-ratio:1608/1980;background:#222}
+.pa-photo img{width:100%;height:100%;object-fit:cover}
+.pa-tag{position:absolute;left:-18px;bottom:40px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 17px;box-shadow:0 16px 32px -18px rgba(50,40,20,.55);transform:rotate(-3.4deg);font-size:13px;font-weight:700;letter-spacing:.04em;z-index:2}
+.pa-tag span{display:block;font-size:10.5px;color:var(--ink-2);font-weight:400;letter-spacing:.06em;margin-top:2px}
+.pa-star{position:absolute;top:-10px;right:2px;font-size:31px;color:var(--accent);transform:rotate(14deg);line-height:1;z-index:2}
+.hero .index-list{margin-top:30px;border-radius:10px}
+.hero .index-list a{padding:15px 6px}
+
+/* ---------- about / skills ---------- */
+.about-label{font-family:var(--mono);font-size:11px;letter-spacing:.26em;color:var(--accent);margin-bottom:22px}
+.edu-block{margin-top:32px;border-top:1px solid var(--line);padding-top:24px}
+.edu-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.edu-head b{font-size:16px}
+.edu-head .yr{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.edu-courses{margin-top:12px;font-size:13px;color:var(--ink-2);line-height:2}
+.edu-courses .sc{color:var(--accent);font-family:var(--serif);font-weight:700;margin-left:5px}
+.edu-courses .grp{display:block;margin-top:4px}
+.skill-groups{display:flex;flex-direction:column;gap:15px}
+.skill-group{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:start}
+.sg-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:#fff;background:var(--accent);border-radius:9px;text-align:center;padding:7px 4px;line-height:1.5}
+.sg-items{display:flex;flex-wrap:wrap;gap:8px}
+.sg-items span{font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:5px 12px}
+.about-tools{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.about-tools .at-t{font-size:12px;color:var(--ink-3);margin-bottom:12px;letter-spacing:.05em}
+
+/* ---------- full articles ---------- */
+.article-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.article-card .art-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.art-expand{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-2);background:transparent;border:1px solid var(--line);border-radius:30px;padding:6px 15px;cursor:pointer;transition:.25s}
+.art-expand:hover{color:#fff;background:var(--accent);border-color:var(--accent)}
+.article-frame{border:1px solid #2C2A25;border-radius:30px;padding:11px;background:#211F1B;box-shadow:0 30px 60px -34px rgba(40,30,15,.6)}
+.article-scroll{height:620px;overflow-y:auto;background:#fff;border-radius:20px;scrollbar-width:thin}
+.article-content{padding:32px 24px 42px;font-size:14.5px;line-height:1.9;color:#3B3933}
+.ac-title{font-size:21px;font-weight:700;color:#1C1B18;line-height:1.5}
+.ac-date{font-size:11px;color:#A5A094;margin:10px 0 24px;font-family:var(--mono);letter-spacing:.06em}
+.article-content p{margin-bottom:14px}
+.article-content p b{color:#1C1B18}
+.ac-sec{display:flex;align-items:center;gap:10px;margin:30px 0 16px;font-size:16px;font-weight:700;color:#1C1B18}
+.ac-sec .n{background:var(--accent);color:#fff;font-family:var(--serif);font-size:13px;border-radius:8px;padding:2px 11px}
+.ac-fig{margin:20px 0}
+.ac-fig img{width:100%;border-radius:9px;border:1px solid #ECEAE4}
+.ac-fig figcaption{font-size:11.5px;color:#A5A094;text-align:center;margin-top:8px}
+.ac-resume{background:#F7F4EE;border:1px solid #ECE7DC;border-radius:11px;padding:17px 19px;font-size:13px;line-height:2.05;color:#5A564B;margin:18px 0}
+.ac-resume b{color:#1C1B18}
+.ac-kw{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:18px 0}
+.ac-kw .col{border-radius:11px;padding:15px 16px;font-size:12.5px;line-height:1.95;color:#4A473F}
+.ac-kw .j{background:#EEF2F6}
+.ac-kw .p{background:#F4F0EA}
+.ac-kw h6{font-size:13px;margin-bottom:8px;color:#1C1B18}
+.ac-iv{border-left:3px solid var(--accent);background:#FAF7F2;border-radius:0 11px 11px 0;padding:13px 17px;margin:15px 0;font-size:13px;line-height:1.9;color:#5A564B}
+.ac-iv b{display:block;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.1em;margin-bottom:7px}
+.ac-end{text-align:center;margin-top:28px;color:#A5A094;font-size:13px;letter-spacing:.2em}
+.ac-credits{border-top:1px dashed #E1DCD2;margin-top:18px;padding-top:15px;font-size:12px;color:#8A8578;line-height:2.1}
+
+/* article fullscreen modal */
+.art-modal{position:fixed;inset:0;z-index:210;background:rgba(245,242,236,.96);backdrop-filter:blur(10px);display:none;overflow-y:auto}
+.art-modal.open{display:block}
+.am-body{max-width:660px;margin:5vh auto 8vh;background:#fff;border:1px solid var(--line);border-radius:18px;padding:48px 46px;box-shadow:0 40px 90px -40px rgba(50,40,20,.4)}
+.am-close{position:fixed;top:26px;right:34px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:26px;cursor:pointer;line-height:1;font-family:var(--serif);z-index:212}
+.am-close:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ---------- webfinal vertical video ---------- */
+.webfinal{display:grid;grid-template-columns:auto 1fr;gap:50px;align-items:center;margin-top:74px;border-top:1px solid #DCD2C0;padding-top:62px}
+.wf-media{position:relative;aspect-ratio:9/16;height:540px;border-radius:22px;overflow:hidden;cursor:pointer;background:#111;box-shadow:0 30px 60px -30px rgba(40,30,15,.55)}
+.wf-media img{width:100%;height:100%;object-fit:cover}
+.wf-media video{width:100%;height:100%;object-fit:cover;background:#000}
+.wf-media .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.wf-media:hover .play-btn{background:var(--accent)}
+.wf-media:hover .play-btn svg path{fill:#fff}
+.wf-media .vid-duration{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:4px 10px;border-radius:6px;font-family:var(--mono)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .about-grid{grid-template-columns:1fr;gap:34px}
+  .feat-grid{grid-template-columns:1fr}
+  .mini-grid{grid-template-columns:1fr 1fr}
+  .key-showcase{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .process-line{display:none}
+  .vid-card{grid-template-columns:1fr;gap:26px}
+  .vid-card.flip .vid-media{order:0}
+  .foot-grid{grid-template-columns:1fr}
+  .w7,.w5,.w6{grid-column:span 12}
+  .web-grid{grid-template-columns:1fr}
+  .article-grid{grid-template-columns:1fr}
+  .webfinal{grid-template-columns:1fr;gap:30px;justify-items:center}
+  .wf-media{height:480px}
+  .skill-group{grid-template-columns:1fr;gap:8px}
+  .sg-label{padding:6px}
+  .am-body{padding:36px 24px;margin:4vh 16px 8vh}
+  .nav-links a span.txt{display:none}
+}
+@media (max-width:560px){
+  .mini-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr}
+  .wrap,.nav-inner{padding-left:18px;padding-right:18px}
+  .nav-links{gap:16px}
+  .nav-contact{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="logo">黄羽<span>HUANG YU · PORTFOLIO</span></div>
+    <div class="nav-links">
+      <a href="#s1"><span class="n">01</span><span class="txt">内容叙事</span></a>
+      <a href="#s2"><span class="n">02</span><span class="txt">视觉排版</span></a>
+      <a href="#s3"><span class="n">03</span><span class="txt">全链路项目</span></a>
+      <a href="#s4"><span class="n">04</span><span class="txt">视频剪辑</span></a>
+      <a href="#contact" class="nav-contact">联系我</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="rv in">
+        <div class="kicker">PORTFOLIO · 2026</div>
+        <h1>把想法，<br/>做成<span class="ul">作品。<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M2 9 C 50 2, 120 2, 198 8" stroke="#BC6E43" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg></span></h1>
+        <p class="hero-sub"><b>黄羽</b>，新闻学（财经新闻方向）在读。能写选题、跑采访，也能做设计、剪片子，最擅长一个人把项目从 0 做到 1。</p>
+        <div class="hero-btns">
+          <a href="#s3" class="btn-primary">查看全链路项目 <span class="arr">→</span></a>
+          <a href="#s1" class="btn-ghost">浏览全部作品 ↓</a>
+        </div>
+        <p class="hero-note">* 本作品集亦为本人独立设计与制作</p>
+      </div>
+      <div class="rv in" style="transition-delay:.15s">
+        <div class="portrait-art">
+          <div class="pa-shape"></div>
+          <div class="pa-photo"><img src="work-01.webp" alt="黄羽"/></div>
+          <div class="pa-tag">黄羽 HUANG YU<span>新闻学子 · 内容创作者</span></div>
+          <div class="pa-star">✳</div>
+        </div>
+        <div class="index-list">
+          <a href="#s1"><span class="il-num">01</span><span class="il-title">内容策划与叙事</span><span class="il-arrow">→</span></a>
+          <a href="#s2"><span class="il-num">02</span><span class="il-title">视觉呈现与排版设计</span><span class="il-arrow">→</span></a>
+          <a href="#s3"><span class="il-num">03</span><span class="il-title">全链路项目落地</span><span class="il-arrow">→</span></a>
+          <a href="#s4"><span class="il-num">04</span><span class="il-title">视频剪辑</span><span class="il-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<div class="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="rv">
+        <div class="about-label">ABOUT ME · 关于我</div>
+        <p class="about-quote">动笔前先问一句：<br/>给谁看、想让他们<em>带走什么</em>。</p>
+        <div class="edu-block">
+          <div class="edu-head">
+            <b>哈尔滨商业大学 · 新闻学（本科）</b>
+            <span class="yr">2023.08 – 2027.06</span>
+          </div>
+          <div class="edu-courses">
+            财经新闻方向，主修高分课程：
+            音视频节目制作<span class="sc">95</span>、危机公关与舆论引导<span class="sc">94</span>、网络传播技术<span class="sc">93</span>、媒介伦理与法规<span class="sc">91</span>、媒介经营与管理<span class="sc">90</span>、数字排版技术与应用<span class="sc">88</span>
+            <span class="grp">兼修：管理学 · 经济学 · 金融学 · 统计学 · 财报分析</span>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat"><div class="v">13+</div><div class="l">件作品</div></div>
+          <div class="stat"><div class="v">4</div><div class="l">大能力模块</div></div>
+          <div class="stat"><div class="v">0→1</div><div class="l">独立项目经验</div></div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="about-label">SKILLS · 技能</div>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <div class="sg-label">内容创作</div>
+            <div class="sg-items"><span>文案策划</span><span>深度采写</span><span>公众号排版编辑</span><span>短视频 / 纪录短片剪辑</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-label">Web &amp; 视觉</div>
+            <div class="sg-items"><span>网页全流程搭建</span><span>PS 海报设计</span><span>H5 页面</span><span>ID 排版</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-label">数据分析</div>
+            <div class="sg-items"><span>Excel 透视表 / VLOOKUP</span><span>SPSS 回归分析</span><span>镝数图表</span><span>PPT 动态图表</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-label">证书</div>
+            <div class="sg-items"><span>普通话二级甲等</span><span>C1 驾驶证</span></div>
+          </div>
+        </div>
+        <div class="about-tools">
+          <div class="at-t">常用工具 / SOFTWARE</div>
+          <div class="about-tools" style="margin-top:0;padding-top:0;border-top:none;display:flex;flex-wrap:wrap;gap:9px">
+            <span class="chip">秀米</span>
+            <span class="chip">剪映 / Premiere</span>
+            <span class="chip">Photoshop / InDesign</span>
+            <span class="chip">Dreamweaver</span>
+            <span class="chip">八爪鱼采集器</span>
+            <span class="chip">表答</span>
+            <span class="chip">巨量算数 / 百度指数</span>
+            <span class="chip">SPSS</span>
+            <span class="chip">HTML / CSS / JS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 -->
+<section class="block" id="s1">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">01</div>
+      <div class="sec-top">PART 01 · CONTENT &amp; STORYTELLING</div>
+      <div class="sec-title">内容策划与叙事</div>
+      <div class="sec-desc">从选题、采访到成稿，用读者看得懂、愿意看的方式，把一件事讲清楚。</div>
+    </div>
+
+    <div class="sub-head rv"><span class="sn">A.</span><h3>数据新闻</h3><span class="hint">长图形式 · 点击查看完整作品</span></div>
+    <div class="feat-grid">
+      <div class="feat-card rv">
+        <div class="poster-frame browser" style="border-radius:12px 12px 0 0">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">数据新闻长图 · 个人作品</span></div>
+          <img src="work-02.webp" data-full="work-03.webp" data-lb="dn" data-caption="《别再说广西只有“表哥”：年轻人都在跳“大地飞歌REMIX”》｜个人独立完成" alt="大地飞歌数据新闻"/>
+          <span class="scroll-hint">悬停下滑预览 ↑↓</span>
+        </div>
+        <div class="feat-body">
+          <div class="tag-row"><span class="tag">个人独立完成</span><span class="tag gray">数据新闻</span></div>
+          <h4>《别再说广西只有“表哥”：年轻人都在跳“大地飞歌REMIX”》</h4>
+          <p>以抖音爆款民族舞为切口，爬取 439 条评论做词云与情感分析，结合巨量算数搜索指数、地域分布地图，拆解一首民歌 REMIX 如何从广西火向全国。</p>
+          <div class="tools">八爪鱼 · 表答 · 巨量算数 · 镝数图表</div>
+        </div>
+      </div>
+
+      <div class="feat-card rv">
+        <div class="poster-frame browser" style="border-radius:12px 12px 0 0">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">数据新闻长图 · 小组作品</span></div>
+          <img src="work-04.webp" data-full="work-05.webp" data-lb="dn" data-caption="《追剧还是照镜子？职场女性困于“透明墙”》｜小组合作" alt="职场女性数据新闻"/>
+          <span class="scroll-hint">悬停下滑预览 ↑↓</span>
+        </div>
+        <div class="feat-body">
+          <div class="tag-row"><span class="tag">小组合作</span><span class="tag gray">数据新闻</span></div>
+          <h4>《追剧还是照镜子？职场女性困于“透明墙”》</h4>
+          <p>以《新闻女王2》为引子，对照智联招聘职场调查报告，用岗位性别占比、晋升障碍、职场不公待遇等数据，丈量女性职场“天花板”的真实高度。</p>
+          <div class="tools">智联报告 · 镝数图表 · 数据可视化</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-head rv"><span class="sn">B.</span><h3>公众号推文 · 完整作品</h3><span class="hint">框内上下滑动阅读全文，或点“全屏阅读”</span></div>
+    <div class="article-grid">
+      <div class="article-card rv">
+        <div class="art-head">
+          <span class="tag">大推文 · 组长 / 统筹 + 文字</span>
+          <button class="art-expand" data-art="art-da">全屏阅读 ⛶</button>
+        </div>
+        <div class="article-frame">
+          <div class="article-scroll">
+            <div class="article-content" id="art-da">
+              <div class="ac-title">人物专访｜毛瑞男：<br/>韬光养晦，静待花开</div>
+              <div class="ac-date">2024-06-19 · 大推文</div>
+              <p>基础科学学院的新闻学专业于 2003 年设立。在校训“求真至善，修德允能”的教导下，无数英才从这里走出。明晰的人生规划，对于现在大学生的成长就业十分关键。在众多优秀的毕业生中，新闻学专业的毕业生毛瑞男，是非常具有人生规划的毕业生代表。在 5 月 5 日，小编采访到了毛瑞男，让我们一起走进她的故事。</p>
+              <figure class="ac-fig"><img src="work-06.webp" alt="毛瑞男证件照"/><figcaption>我校优秀校友 · 新闻学专业 毛瑞男</figcaption></figure>
+              <div class="ac-resume">
+                <b>中国共产党党员，经济学博士，硕士生导师</b><br/>
+                2010.9–2014.6　哈尔滨商业大学 新闻学，文学学士学位<br/>
+                2014.9–2017.6　哈尔滨商业大学 产业经济学，经济学硕士学位<br/>
+                2017.9–2021.6　哈尔滨商业大学 产业经济学，经济学博士学位<br/>
+                博士毕业后，现于广东海洋大学任教。硕博期间，在《科教导刊》《人民论坛》《学术前沿》《哈尔滨商业大学学报》等发表多篇期刊。
+              </div>
+              <p>在小编与毛瑞男学姐的交流中了解到，她的本科专业是新闻学，硕博是产业经济学。对于她跨专业考研上岸、从新闻到经济跨越之大，小编对其更来了兴趣。</p>
+              <div class="ac-sec"><span class="n">01</span>稳打稳扎，锲而不舍</div>
+              <figure class="ac-fig"><img src="work-07.webp" alt="毕业典礼发言"/><figcaption>毛瑞男在博士毕业典礼上发言</figcaption></figure>
+              <p>哈尔滨商业大学新闻学专业与其他不同，在于它更偏向财经新闻，因此新闻学学生在本科阶段会学习一些经济学基础课程。对于这样微浅的经济学基础，“对于培养经济学的思维逻辑是远远不够的”，毛瑞男回答道。在浅薄的经济学基础上，她稳打稳扎，进一步深耕，她锲而不舍的精神，是她成功路上的助力。跨专业考研本身就是个巨大挑战，是对新领域的学习，除了要解决备考中遇到的困难，还有上岸后随之而来的一系列问题。</p>
+              <p>她谈到在备考期间，除了与无数经济学考研生作斗争，还在与自己作斗争。在图书馆备考时，萌生过打退堂鼓的想法——一个非经济学专业的学生，跨考是否是正确的选择？面对外界压力与自己偶尔不好的心态，她表示“还是要端正心态，基础薄弱就努力去学，遇到困难就横下心去解决”。</p>
+              <p>在读研期间，她并未按部就班地学习，而是合理安排时间，劳逸结合，比方说跑步。她回忆起读书阶段时，“我读书的时候比较喜欢晨跑，后来就去跑马拉松，完赛时候的成就感还是蛮解压的。”正如朱光潜所说：“忙里偶然偷闲，闹中偶然觅静，于身于心，都有极大裨益。”在忙碌的学习生活中留出一些空白给自己，一方面积蓄能量，让自己更有力量前行，另一方面有时间反思、分析、判断、选择，让自己看清方向，知道主次，识别真伪。</p>
+              <p>人生的旅途没有一帆风顺，除了备考期间的困难，毕业之后困难并未消失。她表示遇到了两个问题：一是从事工作的原因，要给学生上课，尤其是经济学，时效性比较强，就要不断补充新知识，这个过程需要不断学习；二是科研工作不能间断，要一直追踪学术前沿。</p>
+              <figure class="ac-fig"><img src="work-08.webp" alt="毕业典礼现场"/><figcaption>毕业典礼现场</figcaption></figure>
+              <p>除此之外，生活上也有些困难。毛瑞男本硕博期间都在哈尔滨商业大学，毕业后一路南下，从位于大陆北边的哈尔滨去到了位于大陆南边的广东湛江。对她来说，最大的挑战是南北方的差异，“一下子换到 4000 多公里外的地方，整个气候、饮食习惯都变了，确实需要一段时间适应。”地方差异是每个漂泊在外的孩子不可避免的。即使困难不断向她涌来，她仍然不轻易说放弃，而是坚持不懈，迎难而上。</p>
+              <p>人生这趟旅途漫长而又短暂。在这趟旅途中，毛瑞男带着始终要学好的精神，为自己心仪的专业拼搏努力；在这趟孤独的旅程中，锲而不舍、坚持不懈的精神，使她不再孤单，鼓起勇气奋起拼搏！</p>
+              <div class="ac-sec"><span class="n">02</span>明晰的人生规划</div>
+              <p>人生不能盲目前行，好的人生离不开好的规划。毛瑞男表示，当大学老师应该是本科时候就立志成为的目标。本科期间，她便对未来有了明确目标；硕博期间目标更加明确，为之做了计划并努力。博士毕业后，毛瑞男进入广东海洋大学任教。问其有没有向经济学其他领域发展的计划时，她笑道，“因为喜欢学校的氛围，一直都是青春洋溢的。”恬静又充满朝气，浓厚的学术氛围，来来往往的年轻人，懵懂又充满求知欲的眼神，何尝不是毛瑞男的缩影。在她的努力下，她实现了自己的目标。</p>
+              <p>对于刚步入大学的大学生来说，他们刚刚结束了青春岁月中一场重要的考试，但它并非人生中最沸腾的一页。因此，大学期间不该碌碌无为、混沌度日，而是站在新起点上，拿起手中的画笔，在画卷上不断打草稿，在自己的人生道路上画出更多浓墨重彩的篇章。记住，画笔始终在你们手中，未来的道路由你们自己来书写。</p>
+              <div class="ac-sec"><span class="n">03</span>未来工作展望</div>
+              <p>在任大学教师这几年中，毛瑞男表示，“我在商大 11 年的求学之路受到了许多老师的关心和照顾，我现在努力把曾经感受到的温暖与爱传递给我的学生们。”提到对之后工作的展望，她表示要终身学习、不断自我提升，正如前文谈到的“经济学时效性比较强，就要不断补充新知识，这个过程需要不断学习”，唯有不断补充新知识，才能更好地教导学生。在教师这条路上，做有温度的引路人，做言传身教的引路人。承师恩，传师志。</p>
+              <figure class="ac-fig"><img src="work-09.webp" alt="毕业合影"/><figcaption>毛瑞男与学生的毕业照</figcaption></figure>
+              <p>毛瑞男从新闻学到经济学，毕业再到就职工作，一路走来，全情投入，锲而不舍，不忘初心，不断践行着“求真至善，修德允能”的校训。教师这条路并不难走，她稳打稳扎，一步一个脚印地去实现自己的理想，为无数商大新闻学子树立了榜样。希望毛瑞男学姐优秀且努力的求学经历，能激励商大新闻学子，在自己的人生道路上渐入佳境！</p>
+              <div class="ac-end">— END —</div>
+              <div class="ac-credits">
+                文字｜黄羽、韩定坤、何佳怡<br/>
+                图片｜黄羽、韩定坤、何佳怡、曾政玲、刘嘉丽、寸灵垚、侯鑫志<br/>
+                指导教师｜刘杨
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card rv">
+        <div class="art-head">
+          <span class="tag">小推文 · 编辑</span>
+          <button class="art-expand" data-art="art-xiao">全屏阅读 ⛶</button>
+        </div>
+        <div class="article-frame">
+          <div class="article-scroll">
+            <div class="article-content" id="art-xiao">
+              <div class="ac-title">J人还是P人？<br/>做自己的引路人</div>
+              <div class="ac-date">2024-06-14 · 小推文</div>
+              <figure class="ac-fig"><img src="work-10.webp" alt="你是J人还是P人"/></figure>
+              <p>你知道 MBTI 吗？你知道自己是什么人格吗？你是 J 人还是 P 人？MBTI，一种人格类型理论模型，悄然之间在新一代年轻人之间流传开来，每一个人都抱着好奇，点开网站探索属于自己的人格。</p>
+              <p>当我们知道自己的人格之后，对生活有什么改变吗？人格测试给我们带来了什么呢？小编带着以上问题去往每一个不同的年轻人之中采访，寻找答案，也将同样的问题抛给内心的自己。形形色色的答案绘就了每一个人对自己人生的畅想，亦是对人生的歌叹。</p>
+              <p>安东尼说过一句话：“不管昨夜经历了怎样的泣不成声，早晨醒来这个城市依然车水马龙。”人生就是这样，不论每一天经历了什么、发现了什么，时光依旧匆匆，你也从未在人生这条路上轻易驻足。MBTI 的兴起是当代年轻人对自己内在的一种好奇、一种探寻，就好像我们小时候喜欢的星座、生肖、幸运数字等等。</p>
+              <p>如果是一个 J 人，他会羡慕 P 人的自由自在吗？如果是一个 P 人，他会想要 J 人的计划缜密吗？我们总是希望通过这些事物来看清自己，但也因此陷入了刻板印象之中。就好像在各大短视频平台上看到的 MBTI 梗图那样，有多少人将自己代入进去直呼“是我没错了！”，之后就下意识地把梗图里的条条框框搬到自己身上。刻板印象层出不穷，甚至有人以 MBTI 去评判身边的亲人、同学、朋友。</p>
+              <div class="ac-sec">关于 MBTI</div>
+              <p>卡尔·古斯塔夫·荣格，瑞士心理学家，其所著《心理类型》论述了性格的一般态度类型和机能类型。迈尔斯·布里格斯类型指标（Myers-Briggs Type Indicator，MBTI）由美国作家伊莎贝尔·布里格斯·迈尔斯和她的母亲凯瑟琳·库克·布里格斯在荣格理论基础上，增加了判断和知觉两种类型，由此形成个性的四维八级特征，彼此结合构成十六个个性类型，编制成《迈尔斯·布里格斯类型指标》，把荣格的类型理论付诸实践。</p>
+              <p>MBTI 测试内容都是迫选题，因为它源于荣格的“双极假设”，即我们不能同时进行思维和体验情感，或者不能同时吸收感觉又使用直觉。仅仅基于 MBTI 结果确定类型是不正确的，还需要后续访谈。</p>
+              <p>这种理论可以帮助解释为什么不同的人对不同事物感兴趣、擅长不同工作，并且有时不能互相理解。世界五百强中，有 80% 的企业有 MBTI 应用经验。MBTI 主要应用于职业发展、职业咨询、团队建议、婚姻教育等方面，是目前国际上应用较广的人才甄别工具。</p>
+              <p>人的性格倾向，就像分别使用自己的两只手写字，都可以写出来，但惯用的那只写出的会比另一只更好。每个人都会沿着自己所属的类型发展出个人行为、技巧和态度，每一种也都存在自己的潜能和潜在盲点。</p>
+              <div class="ac-sec">J 人和 P 人的区别</div>
+              <p>J 人和 P 人又被称为判断型偏好的人以及感知型偏好的人。</p>
+              <p><b>感知型偏好（P）的人</b>，更喜欢不断搜集信息、体验生活、感知世界，不喜欢做决定，偏好宽松、自由、顺其自然的生活方式，更容易随遇而安，给人舒适的感觉。</p>
+              <p><b>判断型偏好（J）的人</b>，更喜欢做判断、做决策、做各种计划且严格按计划行事，喜欢掌控和管理生活的方方面面，这样才有足够安全感，常给人认真严谨的感觉。</p>
+              <div class="ac-kw">
+                <div class="col j"><h6>（J）判断</h6>封闭定向；结构化、组织化；时间导向；决断，事情都有正误之分；喜欢命令、控制，反应迅速；喜欢完成任务；不善适应。</div>
+                <div class="col p"><h6>（P）知觉</h6>开放定向；弹性化、自发化；探索和开放结局；好奇，喜欢收集新信息而不是做结论；喜欢观望，开始许多新项目但不完成；优柔寡断，易分散注意。</div>
+              </div>
+              <div class="ac-sec"><span class="n">03</span>采访实录</div>
+              <p>采访中收获的答案众多，J 和 P 的差异显得越来越大。但问到对生活及未来规划时，有的 J 人说会感到计划的局限性；有的 P 人表示在试着向 J 人的计划性靠近。他们有的稳重务实，却也会在累的时候选择自由一把，暂时逃离计划之外；有的自由洒脱，却会在遇到困难时迅速做出规划，让头脑风暴充斥计划的每一角。</p>
+              <div class="ac-iv"><b>受访者一 · ENFJ</b>“我觉得可能会更加倾向于哪一类的工作，减少一些不必要的麻烦。”<br/>该受访者是一名会计系班长，平常管理班中事务。会计专业需要谨慎、沉稳、有耐心的性格，她表示能在了解自己的 MBTI 后选择更适合也更喜欢的专业，是很满意的事；作为 J 人，组织管理让她承担班长职务时感到快乐。</div>
+              <div class="ac-iv"><b>受访者二 · ENFJ</b>“毕竟它是对你性格的一种分析，让你更清楚地认识自己，也帮助你更好地做自我计划。”<br/>该受访者是哈小商艺玩文创工作室宣传部副部长。他认为能成为副部长离不开责任心强、组织力好、沟通能力好的性格；作为 J 人，MBTI 是更了解自己的方式，但对规划只起微弱作用，更多靠自己对现在生活和未来展望的计划引导前行。</div>
+              <div class="ac-iv"><b>受访者三 · ENTP</b>“有一点帮助但不多。假如我想朝 J 人那边发展，就会强迫自己做一些计划，但通常还是比较顺其自然。”<br/>该受访者是金融系学生会成员、班级学习委员。她知道 J 和 P 的差距后会试着观察、模仿 J 人的习惯，认为这是把两者特点相融合的学习方法，帮助自己日后绽放光彩。</div>
+              <div class="ac-iv"><b>受访者四 · INFP</b>“没有什么计划性，更加想到什么做什么，就保持本性嘛。”<br/>该受访者是前校艺术团新媒体部副部长。作为 P 人，参加喜欢的艺术团、参与艺术性活动让她很快活自在；看看天上的云，过平淡而又能保持自我的生活很快乐。被问会不会羡慕 J 人时答：“不会，因为我喜欢随性，做自己最好。”</div>
+              <p>有的 P 人不会羡慕 J 人，那有的 J 人会羡慕 P 人吗？路远且长，愿我们都能做自己的阳光。</p>
+              <p>人格、星座、生肖从来不是束缚人生的裹脚布，它们让我们更全面地认识自己、面对自己。不论是 J 人还是 P 人，我们都在丰富自己的同时，为未来的夜晚点亮一盏长明的引路灯，成为自己的引路人。</p>
+              <p>最后愿我们都如黄永玉所说：“明确的爱，直接的厌恶，真诚的喜欢，站在太阳下的坦荡，大声无愧地称赞自己。”我们终将找到真实的、勇敢的自己。</p>
+              <div class="ac-end">/ END /</div>
+              <div class="ac-credits">
+                文案｜韩定坤<br/>
+                图片｜黄羽、韩定坤、刘嘉丽、寸灵垚、何佳怡、侯鑫志、曾政玲<br/>
+                编辑｜韩定坤、黄羽　指导老师｜刘杨
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-head rv" style="margin-top:72px"><span class="sn">C.</span><h3>深度采访 · 完整作品</h3><span class="hint">框内上下滑动阅读全文，或点“全屏阅读”</span></div>
+    <div class="article-grid">
+      <div class="article-card rv">
+        <div class="art-head">
+          <span class="tag">深度报道 · 独立采写</span>
+          <button class="art-expand" data-art="art-shendu">全屏阅读 ⛶</button>
+        </div>
+        <div class="article-frame">
+          <div class="article-scroll">
+            <div class="article-content" id="art-shendu">
+              <div class="ac-title">城市生活的磨砺：<br/>任鲸鱼的蜕变</div>
+              <div class="ac-date">深度报道 · 约 1600 字</div>
+              <p>在人生的长河中，每个人都在用自己的方式写着属于自己的故事。有人选择安逸，有人选择挑战。</p>
+              <p>在繁华喧嚣的都市中，有这样一群大学生，他们选择以兼职的方式，书写属于自己的城市生活篇章。他们面对挑战，坚韧不拔，不断成长，最终实现了从青涩到成熟的华丽蜕变。任鲸鱼，这位来自山城重庆的“辣妹子”，便是这群大学生兼职者中的一员。</p>
+              <p>怀揣着对未来的憧憬，她来到距离家乡两千多公里外的哈尔滨求学。前期课程较轻，她不愿让大学生活沉溺于无聊的刷手机中，于是决定尝试兼职，体验不一样的城市生活。</p>
+              <p>2024 年 6 月 21 日，任鲸鱼在麦当劳兼职已满 4 个月。见到她时，她穿着黑色衬衫，佩戴整洁的围裙，在咖啡机后有序地忙碌着。“35109 的咖啡好了！”她将做好的奶铁放在单号上，向前推了一点，之后便将使用过的工具清洗、摆放。</p>
+              <p>中午 12 点饭点时间，餐厅陆续进人，点咖啡的顾客少了，她便迅速转换角色，成为呈递处的得力助手。她接过一份份餐，认真对照盘子里的餐品与单子是否一致，再把小料放在餐盘内，叫号“39602 的餐好了！”这样的工序重复了一遍又一遍。偶尔有来催餐的，她也耐心、温柔地告诉顾客再等一会儿，别着急。一切看来，她已经十分熟练。</p>
+              <p>当谈及为什么选择麦当劳时，她笑着说：“从小就爱吃麦当劳，也经常在网上玩梗，说‘麦门！’，所以当我有兼职的想法时，第一反应就是麦当劳。”</p>
+              <p>“3 月刚来的时候，我不是咖啡师，在后面炸薯条，那个冰冻薯条好重，根本抬不动，还有炸薯条的筐也好重，那一周我的手都是酸痛的。”</p>
+              <p>“有一次一位顾客刚下单就过来催单，我们后面都还没收到消息，那顾客就对我发火，那时候真的好委屈，有点不想干了。”</p>
+              <p>“6 月就升到咖啡师了，那时候心想终于逃出后厨了。”</p>
+              <p>初入麦当劳，她在后厨炸薯条，面对沉重的冰冻薯条和炸筐，她的手一度酸痛不已；面对顾客的催单和发火，她也曾感到委屈和迷茫。但正是这些挑战，激发了她内心的不屈与斗志。</p>
+              <p>随着时间推移，任鲸鱼逐渐适应了兼职生活。开学后的一次见面，她谈了很多这九个月兼职里的感受：“有时候会觉得很累，但想想好像还是非常有趣，好像没有获得什么实际的技能提升，但在个人层面又觉得获得了很多成长。”</p>
+              <p>6 月结束后，她辞去麦当劳的兼职，回到重庆，在爸爸常喝茶的茶馆做了短短一个月兼职，学到一些基础茶艺，每天泡茶喝茶；离开是因为受不了茶馆的二手烟。</p>
+              <figure class="ac-fig"><img src="work-11.webp" alt="麦当劳店员合影"/><figcaption>任鲸鱼与麦当劳部分店员合影（图源：任鲸鱼提供）</figcaption></figure>
+              <p>9 月开学回到哈尔滨，任鲸鱼选择星巴克作为新的兼职地点。“我本身很喜欢玩经营类小游戏，上班的过程有点像在玩经营小游戏。”她坦言前 20 年对咖啡没什么认知，在麦当劳接触咖啡后，便想尝试星巴克。在星巴克里，师父对她很好、很有耐心，也有很多有趣的小伙伴，她学到了很多与咖啡相关的知识。</p>
+              <p>回首这九个月的兼职经历，任鲸鱼感慨：“干服务业的活真的很锻炼人心态，陆陆续续兼职九个月，感觉我被磨炼得特别情绪稳定。”在麦当劳兼职的前一个月，很多东西都没学，她边学边做，不仅要忍受长时间站立和顾客挑剔，还要学会在繁忙中保持冷静和耐心。接下来的日子里，她开始主动学习沟通技巧，提升服务品质；在与同事的交流中学会团队合作与相互支持，在顾客的反馈中学会倾听与改进。</p>
+              <p>对任鲸鱼而言，每一次兼职都是一次珍贵的人生体验，而非浪费时间。她用行动展现了大学生城市生活的新方式，诠释了城市生活的磨砺与蜕变。</p>
+              <p>任鲸鱼的故事，是每一个在都市中奋斗的大学生的缩影。她用行动证明：兼职不止是为了生计，更是一种生活态度，一种对自我成长的追求。</p>
+              <div class="ac-end">— END —</div>
+              <div class="ac-credits">采写｜黄羽　指导教师｜刘杨</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card rv">
+        <div class="art-head">
+          <span class="tag">人物通讯 · 独立采写</span>
+          <button class="art-expand" data-art="art-tongxun">全屏阅读 ⛶</button>
+        </div>
+        <div class="article-frame">
+          <div class="article-scroll">
+            <div class="article-content" id="art-tongxun">
+              <div class="ac-title">从巷弄到网红：<br/>小摊贩“蟑螂老板”的热度守恒之道</div>
+              <div class="ac-date">人物通讯</div>
+              <p>“蟑螂老板，这个是你吗？”“蟑螂老板，我来‘真实’你了！”“蟑螂老板，给我来个有蟑螂的土豆饼，没有蟑螂我不要哦！”……在喧闹的街头，一群学生拿着手机里的视频，问着三轮车后面的男子。他身材略微胖些，皮肤黝黑，寸头显得干净利落，穿着十分朴素，白灰相间的围裙上布满油渍，这是他日复一日辛勤工作的见证。</p>
+              <p>2023 年 6 月 25 日，他随手发在网络上的一条短视频火了。在网络热度的推广下，他逐渐成为顾客口中的“蟑螂老板”。</p>
+              <p>“蟑螂”这种生物，在人们观念中是不干净的，而从事餐饮的他并没有避之不及，反而形成了自己的 IP。</p>
+              <figure class="ac-fig"><img src="work-12.webp" alt="爆火视频截图"/><figcaption>爆火视频与“蟑螂老板”称呼的来源（图源：“土豆鲨手”抖音账号）</figcaption></figure>
+              <p>2023 年 8 月，蟑螂老板将一半摊位分给我卖豆浆，在此期间，我对他有了更进一步的了解。</p>
+              <p>空闲时间里，他谈了谈对在小范围圈子里爆火的想法。他摘下被热油烫穿的手套，摸了摸冒出毛茬的头，说：“首先是高兴，其次感到意外，这意味着我能通过抖音这个平台，给我的摊子更多曝光。”</p>
+              <p>随着一位小孩喊“蟑螂老板，给我来个土豆饼，不要辣！”，他又套上破破烂烂的手套，从露营椅上起来，右手拿夹子，将一块金黄的土豆饼塞入袋中递给小孩。下一秒他说“土豆丝没了，给我整整”。我挪了挪位置坐到他旁边，跟他一块整土豆丝：他洗完手拿起削皮工具快速给土豆脱皮，再拿起擦丝工具熟练地将土豆变成丝，之后又洗了一遍，换到另一个盆里让淀粉沉淀——这是土豆饼脆的前提。在完全暴露的环境下，卫生干不干净，顾客路过都能看见。</p>
+              <p>饭点过后，我俩终于能歇一会。他从车里掏出“蟑螂”服装——三十多度的天，人们出门都要带把扇子，他却穿上更厚更热的衣服。“被看到，前期肯定得维持好这个 IP。”</p>
+              <p>问他会不会担心“蟑螂”一词影响生意，他坐下来，说：“对蟑螂这个出圈的点我也没什么忌讳，因为确实达到了我想制造反差的效果。并且最近网络上也有很多蟑螂的可爱卡通形象，并非什么非常负面的形象。”</p>
+              <figure class="ac-fig"><img src="work-13.webp" alt="cos蟑螂截图"/><figcaption>蟑螂老板 cos 蟑螂形象，参与网络热点拍摄（图源：“土豆鲨手”抖音账号）</figcaption></figure>
+              <p>随着初高中生晚自习下课，晚高峰来了。许多学生站在摊子旁，看到他的蟑螂装扮都很高兴，他和学生们你一言我一语，在喧闹的街道融入到一块。</p>
+              <p>每天收摊前，他会整些宵夜，打牌聊天放松。提到两个月前爆火的视频，他说突然爆火不容易，保持热度也不容易。为稳定“蟑螂土豆饼”这个 IP，他经常以 cos 蟑螂的形象去跟网络热点，以维持热度。</p>
+              <p>2023 年，云南一网红的“恐龙抗狼”爆火，他便穿上蟑螂服参与热点拍摄，视频再次获得一定热度。</p>
+              <p>七夕节时，他将土豆削成薄片，用牙签穿成一片固定，放入油锅，不一会儿金黄的“土豆玫瑰花”出锅。当天他将“土豆玫瑰花”作为赠品，并在微信群发小额红包，运气最佳者得此花。</p>
+              <figure class="ac-fig"><img src="work-14.webp" alt="土豆玫瑰花"/><figcaption>七夕节制作的“土豆玫瑰花”（图源：“土豆鲨手”抖音账号）</figcaption></figure>
+              <p>2024 年 10 月都安高中校运会，他作为赞助商赞助 2213 班土豆饼并与其合作，该班学生还为他录了小短片，在同学间的宣传让他的热度再次上升。</p>
+              <figure class="ac-fig"><img src="work-15.webp" alt="校运会合作截图"/><figcaption>校运会赞助与合作短片（图源：“土豆鲨手”抖音账号）</figcaption></figure>
+              <p>有时会有顾客在摊前坐下打牌聊天，从他们口中得知蟑螂老板带来许多快乐。“他穿蟑螂服很有喜感。”“有时候不买土豆饼，路过也会看一下他有没有穿蟑螂服。”“他的土豆饼便宜又好吃。”“跟蟑螂聊天很好玩，有时候就是想逗逗他。”……蟑螂老板对顾客的真诚，顾客都看在眼里。</p>
+              <p>热度来得快、去得也快。在这个快节奏时代，蟑螂老板和他的小摊，通过对热点的合理运用，得以将热度持续。</p>
+              <div class="ac-end">— END —</div>
+              <div class="ac-credits">采写｜黄羽　指导教师｜杜紫薇</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 -->
+<section class="block" id="s2" style="padding-top:30px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">02</div>
+      <div class="sec-top">PART 02 · VISUAL &amp; LAYOUT</div>
+      <div class="sec-title">视觉呈现与排版设计</div>
+      <div class="sec-desc">杂志感跨页与网页视觉都能做，让排版替内容先抓住人。</div>
+    </div>
+
+    <div class="sub-head rv"><span class="sn">A.</span><h3>杂志 / 画册排版</h3></div>
+    <div class="mag-grid">
+      <div class="mag-item w7 rv">
+        <div class="frame"><img src="work-16.webp" data-lb="mag" data-caption="《金陵秋日 Citywalk 漫游指南》｜封面 / 钟山秋韵线" alt="金陵秋日指南1"/></div>
+        <div class="cap"><b>《金陵秋日 Citywalk 漫游指南》</b>封面 · 钟山秋韵线</div>
+      </div>
+      <div class="mag-item w5 rv">
+        <div class="frame"><img src="work-17.webp" data-lb="mag" data-caption="《金陵秋日 Citywalk 漫游指南》｜梧桐大道内页" alt="金陵秋日指南2"/></div>
+        <div class="cap"><b>金陵秋日 · 内页</b>梧桐大道 · 拼贴手账风</div>
+      </div>
+      <div class="mag-item w6 rv">
+        <div class="frame"><img src="work-18.webp" data-lb="mag" data-caption="《哈尔滨：东方莫斯科的冰雪奇缘》｜杂志跨页" alt="哈尔滨跨页"/></div>
+        <div class="cap"><b>《哈尔滨：东方莫斯科的冰雪奇缘》</b>城市主题杂志跨页</div>
+      </div>
+      <div class="mag-item w6 rv">
+        <div class="frame"><img src="work-19.webp" data-lb="mag" data-caption="《商大奶茶：奶茶“星人”的天堂》｜品牌对比跨页" alt="商大奶茶跨页"/></div>
+        <div class="cap"><b>《商大奶茶：奶茶“星人”的天堂》</b>校园奶茶品牌对比跨页</div>
+      </div>
+    </div>
+
+    <div class="sub-head rv"><span class="sn">B.</span><h3>网页视觉设计</h3></div>
+    <div class="web-grid">
+      <div class="web-card rv">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">游历长安 · 登录 / 注册</span></div>
+          <div class="shot"><img src="work-20.webp" data-lb="web" data-caption="《游历长安》登录 / 注册页" alt="游历长安登录页"/></div>
+        </div>
+        <div class="cap"><b>《游历长安》登录 / 注册页</b>西安旅游文化网站</div>
+      </div>
+      <div class="web-card rv">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">游历长安 · 首页</span></div>
+          <div class="shot"><img src="work-21.webp" data-lb="web" data-caption="《游历长安》首页" alt="游历长安首页"/></div>
+        </div>
+        <div class="cap"><b>《游历长安》首页</b>推荐 · 资讯 · 论坛模块</div>
+      </div>
+      <div class="web-card rv">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">游历长安 · 西安简史</span></div>
+          <div class="shot"><img src="work-22.webp" data-lb="web" data-caption="《游历长安》西安简史页" alt="游历长安西安简史"/></div>
+        </div>
+        <div class="cap"><b>《游历长安》西安简史页</b>十三朝都城时间线</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 KEY PROJECT -->
+<section class="block band" id="s3">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">03</div>
+      <div class="sec-top">PART 03 · FULL-STACK PROJECT</div>
+      <div class="sec-title">全链路项目落地</div>
+      <div class="sec-desc">从市场调研到代码上线，一个人独立完成的一级网页——这是我最能代表自己的作品。</div>
+    </div>
+
+    <div class="rv">
+      <h3 style="font-size:clamp(26px,3.2vw,38px);font-weight:700;line-height:1.35;max-width:820px">NCT WISH 全球粉丝社区网站<br/><span style="color:var(--ink-2);font-size:.62em;font-weight:500">为全球粉丝打造的一站式非官方互动平台</span></h3>
+      <div class="key-meta">
+        <span class="tag">个人独立完成 · 0→1</span>
+        <span class="tag gray">一级网页</span>
+        <span class="tag gray">资讯 / 社交 / 二创 / 应援</span>
+      </div>
+      <p style="color:var(--ink-2);max-width:860px;margin-top:18px;font-size:15px">平台整合组合资讯、粉丝二创、互动论坛与跨文化社区。从竞品分析、策划书撰写，到 PSD 全站视觉稿、切图，再到 HTML / CSS / JavaScript 编码实现，全部由我独立完成；页面广告位用于投放团队最新代言物料。</p>
+    </div>
+
+    <div class="key-showcase">
+      <div class="rv">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">视觉设计稿 · PSD</span></div>
+          <div class="shot"><img src="work-23.webp" data-lb="key" data-caption="NCT WISH 网站 · PSD 全站视觉设计稿" alt="NCT设计稿"/></div>
+        </div>
+        <div class="key-showcap"><b>① 视觉设计稿</b>浅蓝主色，未来感 × 青春感，模块化信息布局</div>
+      </div>
+      <div class="rv">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">代码成品 · 浏览器实拍</span></div>
+          <div class="shot"><img src="work-24.webp" data-lb="key" data-caption="NCT WISH 网站 · 代码成品浏览器实拍" alt="NCT成品实拍"/></div>
+        </div>
+        <div class="key-showcap"><b>② 代码成品（浏览器实拍）</b>设计稿 1:1 还原，各模块可交互</div>
+      </div>
+    </div>
+
+    <div class="webfinal rv">
+      <div class="wf-media" data-video="clip-01.mp4">
+        <img src="work-25.webp" alt="网页最终版演示封面"/>
+        <div class="play-btn"><svg width="24" height="28" viewBox="0 0 26 30"><path d="M0 0 L26 15 L0 30 Z" fill="#24221C"/></svg></div>
+        <span class="vid-duration">0:15</span>
+      </div>
+      <div class="vid-info">
+        <div class="meta">网页最终版 · 实拍演示 · 0:15</div>
+        <h4>网页在真实屏幕上，跑起来的样子</h4>
+        <p>手机实拍显示器上的网站成品，完整浏览首页与各栏目模块，验证设计稿到代码成品的真实还原效果。</p>
+        <div class="tools">实拍 · 网站成品操作演示</div>
+      </div>
+    </div>
+
+    <div class="process rv">
+      <div class="process-line"></div>
+      <div class="process-grid">
+        <div class="pstep">
+          <div class="pn">1</div>
+          <h5>市场分析 · 策划</h5>
+          <p>分析 Bubble、Weverse、微博超话等竞品；定位 16–28 岁全球 K-pop 粉丝；规划 WISH BOARD、FAN ART ZONE、WISHING WELL、GLOBAL PARTY 四大栏目。</p>
+        </div>
+        <div class="pstep">
+          <div class="pn">2</div>
+          <h5>视觉设计</h5>
+          <p>Photoshop 完成全站 PSD 设计稿，确定浅蓝主色与星星 IP 元素，输出整页效果图。</p>
+        </div>
+        <div class="pstep">
+          <div class="pn">3</div>
+          <h5>切图切片</h5>
+          <p>按页面结构切片导出素材，整理图片资源与目录，为编码做准备。</p>
+        </div>
+        <div class="pstep">
+          <div class="pn">4</div>
+          <h5>前端开发</h5>
+          <p>手写 HTML 结构与 CSS 样式，用 JavaScript 实现登录注册、搜索、留言板等交互功能。</p>
+        </div>
+        <div class="pstep">
+          <div class="pn">5</div>
+          <h5>成品上线</h5>
+          <p>多页面串联、细节校对后成品输出；广告位投放团队最新代言物料。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="deliver rv">
+      <span class="dl-label">产出物：</span>
+      <span class="chip">网站策划书 .docx</span>
+      <span class="chip">全站设计稿 .psd</span>
+      <span class="chip">切片图</span>
+      <span class="chip">HTML / CSS / JS 源码</span>
+    </div>
+
+    <div class="key-cta rv">
+      <a class="btn-dark" href="nct-site/网页最终排版.html" target="_blank">打开网站成品，亲自体验 →</a>
+      <span class="key-note">* 完整源码随作品集一并提供</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 VIDEO -->
+<section class="block" id="s4">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">04</div>
+      <div class="sec-top">PART 04 · VIDEO EDITING</div>
+      <div class="sec-title">视频剪辑</div>
+      <div class="sec-desc">情绪向短片与采访报道都剪过，管得住节奏，也留得住情绪。</div>
+    </div>
+
+    <div class="vid-card rv">
+      <div class="vid-media" data-video="clip-02.mp4">
+        <img src="work-26.webp" alt="物品记忆短片封面"/>
+        <div class="play-btn"><svg width="26" height="30" viewBox="0 0 26 30"><path d="M0 0 L26 15 L0 30 Z" fill="#24221C"/></svg></div>
+        <span class="vid-duration">预览 0:45 / 完整 5:00</span>
+      </div>
+      <div class="vid-info">
+        <div class="meta">情绪向短片 · 1080P / 120FPS · 三人小组</div>
+        <h4>《物·语：每一件物品，都是一段不愿遗忘的时光》</h4>
+        <div class="role">担任：<b>拍摄 + 剪辑</b></div>
+        <p>以演唱会门票、玩偶、钥匙扣等随身小物为线索，用 120fps 慢镜头贴合音乐节奏，串起一段关于记忆与成长的情绪独白。</p>
+        <div class="tools">Premiere · 120fps 慢动作 · 配乐卡点</div>
+        <div class="full-note">点击播放 45 秒精选预览，5 分钟完整版可单独提供。</div>
+      </div>
+    </div>
+
+    <div class="vid-card flip rv">
+      <div class="vid-media" data-video="clip-03.mp4">
+        <img src="work-27.webp" alt="哈尔滨街采报道封面"/>
+        <div class="play-btn"><svg width="26" height="30" viewBox="0 0 26 30"><path d="M0 0 L26 15 L0 30 Z" fill="#24221C"/></svg></div>
+        <span class="vid-duration">预览 1:00 / 完整 11:55</span>
+      </div>
+      <div class="vid-info">
+        <div class="meta">街采报道 · 1080P · 大一小组作品</div>
+        <h4>《城市记忆：哈尔滨历史建筑街采》</h4>
+        <div class="role">小组合作：<b>出镜 / 采访 / 拍摄 / 剪辑</b></div>
+        <p>以哈尔滨城市历史展馆、马迭尔宾馆等百年建筑为线索，主持人出镜串场，结合工作人员、游客、司机的多路采访与建筑空镜，完成城市建筑主题报道。</p>
+        <div class="tools">采访拍摄 · 出镜串场 · 多机位剪辑</div>
+        <div class="full-note">点击播放 60 秒精选预览，近 12 分钟完整版可单独提供。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-title rv">如果你也在找一个<br/><em>能把事做成</em>的人 ——</div>
+    <div class="foot-grid">
+      <div class="foot-contact rv">
+        <div class="fc-item">
+          <div class="l">PHONE / 微信</div>
+          <div class="v">151 7738 6894</div>
+        </div>
+        <div class="fc-item">
+          <div class="l">EMAIL</div>
+          <div class="v">15177386894@163.com</div>
+        </div>
+      </div>
+      <a href="#top" class="totop rv">回到顶部 ↑</a>
+    </div>
+    <div class="foot-note">
+      <span>黄羽 · 2026 作品集 ｜ 本页面由本人独立设计与制作，作品完整文件及源码可应要求提供</span>
+      <span>THANKS FOR WATCHING</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ARTICLE FULLSCREEN MODAL -->
+<div class="art-modal" id="artModal">
+  <button class="am-close" id="amClose">×</button>
+  <div class="am-body" id="amBody"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev">‹</button>
+  <img class="lb-img" id="lbImg" alt="作品大图"/>
+  <button class="lb-nav lb-next" id="lbNext">›</button>
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<script>
+// nav state
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30));
+
+// reveal on scroll
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{
+  if(!el.classList.contains('in')) io.observe(el);
+});
+
+// ---- lightbox ----
+const groups = {};
+document.querySelectorAll('[data-lb]').forEach(el=>{
+  const g = el.dataset.lb;
+  (groups[g] = groups[g] || []).push(el);
+});
+let cur = null, idx = 0;
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCap = document.getElementById('lbCap');
+const lbCounter = document.getElementById('lbCounter');
+
+function openLb(el){
+  cur = el.dataset.lb;
+  const arr = groups[cur];
+  idx = arr.indexOf(el);
+  renderLb();
+  lb.classList.add('open');
+}
+function renderLb(){
+  const arr = groups[cur];
+  const el = arr[idx];
+  lbImg.src = el.dataset.full || el.src;
+  const cap = el.dataset.caption || '';
+  lbCap.innerHTML = cap;
+  lbCounter.textContent = (idx+1) + ' / ' + arr.length;
+}
+function move(d){
+  const arr = groups[cur];
+  idx = (idx + d + arr.length) % arr.length;
+  renderLb();
+}
+document.querySelectorAll('[data-lb]').forEach(el=>{
+  el.style.cursor='pointer';
+  el.addEventListener('click', e=>{ e.stopPropagation(); openLb(el); });
+});
+document.getElementById('lbClose').onclick = ()=>lb.classList.remove('open');
+document.getElementById('lbPrev').onclick = e=>{e.stopPropagation();move(-1)};
+document.getElementById('lbNext').onclick = e=>{e.stopPropagation();move(1)};
+lb.addEventListener('click', e=>{ if(e.target===lb) lb.classList.remove('open'); });
+addEventListener('keydown', e=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') lb.classList.remove('open');
+  if(e.key==='ArrowLeft') move(-1);
+  if(e.key==='ArrowRight') move(1);
+});
+
+// ---- video play on click ----
+document.querySelectorAll('.vid-media, .wf-media').forEach(m=>{
+  m.addEventListener('click', ()=>{
+    if(m.querySelector('video')) return;
+    const v = document.createElement('video');
+    v.src = m.dataset.video;
+    v.controls = true;
+    v.autoplay = true;
+    v.setAttribute('playsinline','');
+    m.innerHTML = '';
+    m.appendChild(v);
+  });
+});
+
+// ---- article fullscreen modal ----
+const artModal = document.getElementById('artModal');
+const amBody = document.getElementById('amBody');
+function closeArt(){ artModal.classList.remove('open'); amBody.innerHTML=''; }
+document.querySelectorAll('.art-expand').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    const src = document.getElementById(btn.dataset.art);
+    amBody.innerHTML = src.innerHTML;
+    artModal.classList.add('open');
+    artModal.scrollTop = 0;
+  });
+});
+document.getElementById('amClose').onclick = closeArt;
+addEventListener('keydown', e=>{
+  if(artModal.classList.contains('open') && e.key==='Escape') closeArt();
+});
+</script>
+</body>
+</html>
